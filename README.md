@@ -16,25 +16,7 @@ https://docs.google.com/spreadsheets/d/1w6Mh8W8C_vjY8R0xVzYc2j1f4y1E8o/edit?usp=
 
 ### CPT - VLSM
 
-*(Bagian Cisco Packet Tracer & perhitungan VLSM dikerjakan oleh Naila Anggun Eka Rizqy)*
-
-1. **Topologi Cisco Packet Tracer**
-
-   ![Topologi CPT](assets/Topologi%20CPT.png)
-
-2. **Total Penggunaan Subnet & Analisa VLSM**
-
-   - Analisa kebutuhan IP dan pembagian subnet berbasis Variable Length Subnet Masking (VLSM).
-   - Pohon pembagian IP (VLSM Tree):
-
-   *(Pohon pembagian IP VLSM akan dilampirkan setelah finalisasi)*
-
-3. **Static Routing CPT**
-
-   - [Left Route (Sayap Kiri)](./routings/cpt/left-route.txt)
-   - [Right Route (Sayap Kanan)](./routings/cpt/right-route.txt)
-   - [Bottom Route (Sayap Bawah)](./routings/cpt/bottom-route.txt)
-   - [Core / Central Route](./routings/cpt/core-route.txt)
+*(Bagian Cisco Packet Tracer & perhitungan VLSM akan diperbarui setelah pengerjaan selesai)*
 
 ---
 
@@ -42,7 +24,7 @@ https://docs.google.com/spreadsheets/d/1w6Mh8W8C_vjY8R0xVzYc2j1f4y1E8o/edit?usp=
 
 Pada topologi GNS3 diterapkan metode **CIDR (Classless Inter-Domain Routing)** dengan prefix kelompok **`192.212.x.x`** dan Root Supernet **`192.212.0.0/19`**. Fokus utama CIDR adalah efisiensi alokasi alamat dan agregasi rute (*route summarization*).
 
-![Topologi GNS3](assets/Topologi%20GNS3.png)
+![Topologi GNS3 + Pembagian Subnet](assets/Topologi_GNS3_Pembagian_Subnet.png)
 
 1. **Topologi Jaringan GNS3**
 
@@ -87,9 +69,11 @@ Total kebutuhan IP jaringan adalah **2814 IP** (termasuk host dan interface rout
 
 ---
 
-3. **Tabel Penggabungan Rute (CIDR Supernetting)**
+3. **Perhitungan Penggabungan Rute (CIDR Supernetting)**
 
-Penggabungan rute dilakukan secara hierarkis (*bottom-up*):
+Penggabungan rute dilakukan secara hierarkis (*bottom-up*) dari subnet terkecil hingga mencapai Root Supernet:
+
+![Topologi GNS3 + Penggabungan CIDR](assets/Topologi_GNS3_Penggabungan_CIDR.png)
 
 * **Tahap I**:
   - `B1` = A22 + A24 $\to$ `/29` (Link Knights-Phantoma + Phantoma-Shibuya)
