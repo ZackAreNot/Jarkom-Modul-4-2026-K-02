@@ -1,0 +1,94 @@
+### Psyche
+enable
+configure terminal
+hostname Psyche
+interface Fa0/0
+ description A14 ke Switch2
+ ip address 192.212.16.34 255.255.255.248
+ no shutdown
+ exit
+interface Fa1/0
+ description A1 ke Switch3
+ ip address 192.212.0.1 255.255.252.0
+ no shutdown
+ exit
+ip route 0.0.0.0 0.0.0.0 192.212.16.33
+ip route 192.212.8.0 255.255.254.0 192.212.16.35
+ip route 192.212.15.192 255.255.255.192 192.212.16.35
+ip route 192.212.4.0 255.255.252.0 192.212.16.36
+ip route 192.212.16.40 255.255.255.248 192.212.16.36
+ip route 192.212.16.68 255.255.255.252 192.212.16.36
+end
+write memory
+
+### Copland
+enable
+configure terminal
+hostname Copland
+interface Fa0/0
+ description A14 ke Switch2
+ ip address 192.212.16.35 255.255.255.248
+ no shutdown
+ exit
+interface Fa1/0
+ description A3 ke Switch4
+ ip address 192.212.8.1 255.255.254.0
+ no shutdown
+ exit
+interface Fa4/0
+ description A12 ke Juri
+ ip address 192.212.15.193 255.255.255.192
+ no shutdown
+ exit
+ip route 0.0.0.0 0.0.0.0 192.212.16.33
+ip route 192.212.0.0 255.255.252.0 192.212.16.34
+ip route 192.212.4.0 255.255.252.0 192.212.16.36
+ip route 192.212.16.40 255.255.255.248 192.212.16.36
+ip route 192.212.16.68 255.255.255.252 192.212.16.36
+end
+write memory
+
+### Schumann
+enable
+configure terminal
+hostname Schumann
+interface Fa0/0
+ description A14 ke Switch2
+ ip address 192.212.16.36 255.255.255.248
+ no shutdown
+ exit
+interface Fa1/0
+ description A15 ke Akashic
+ ip address 192.212.16.41 255.255.255.248
+ no shutdown
+ exit
+interface Fa4/0
+ description A20 ke Accela
+ ip address 192.212.16.69 255.255.255.252
+ no shutdown
+ exit
+ip route 0.0.0.0 0.0.0.0 192.212.16.33
+ip route 192.212.4.0 255.255.252.0 192.212.16.70
+ip route 192.212.0.0 255.255.252.0 192.212.16.34
+ip route 192.212.8.0 255.255.254.0 192.212.16.35
+ip route 192.212.15.192 255.255.255.192 192.212.16.35
+end
+write memory
+
+### Accela
+enable
+configure terminal
+hostname Accela
+interface Fa0/0
+ description A20 ke Schumann
+ ip address 192.212.16.70 255.255.255.252
+ no shutdown
+ exit
+interface Fa1/0
+ description A2 ke Switch5
+ ip address 192.212.4.1 255.255.252.0
+ no shutdown
+ exit
+ip route 0.0.0.0 0.0.0.0 192.212.16.69
+end
+write memory

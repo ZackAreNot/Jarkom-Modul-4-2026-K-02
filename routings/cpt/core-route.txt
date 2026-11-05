@@ -1,0 +1,66 @@
+### Cyberia
+enable
+configure terminal
+hostname Cyberia
+interface Fa0/0
+ description ke Cloud
+ no shutdown
+ exit
+interface Fa1/0
+ description A17 ke Wired
+ ip address 192.212.16.57 255.255.255.252
+ no shutdown
+ exit
+interface Fa4/0
+ description A7 ke Switch1
+ ip address 192.212.14.1 255.255.255.128
+ no shutdown
+ exit
+ip route 192.212.0.0 255.255.224.0 192.212.16.58
+end
+write memory
+
+### Wired
+enable
+configure terminal
+hostname Wired
+interface Fa0/0
+ description A17 ke Cyberia
+ ip address 192.212.16.58 255.255.255.252
+ no shutdown
+ exit
+interface Fa1/0
+ description A14 ke Switch2
+ ip address 192.212.16.33 255.255.255.248
+ no shutdown
+ exit
+interface Fa4/0
+ description A18 ke Navi
+ ip address 192.212.16.61 255.255.255.252
+ no shutdown
+ exit
+interface Fa5/0
+ description A19 ke Tachibana
+ ip address 192.212.16.65 255.255.255.252
+ no shutdown
+ exit
+ip route 0.0.0.0 0.0.0.0 192.212.16.57
+ip route 192.212.0.0 255.255.252.0 192.212.16.34
+ip route 192.212.8.0 255.255.254.0 192.212.16.35
+ip route 192.212.15.192 255.255.255.192 192.212.16.35
+ip route 192.212.4.0 255.255.252.0 192.212.16.36
+ip route 192.212.16.40 255.255.255.248 192.212.16.36
+ip route 192.212.16.68 255.255.255.252 192.212.16.36
+ip route 192.212.12.0 255.255.254.0 192.212.16.62
+ip route 192.212.15.64 255.255.255.192 192.212.16.62
+ip route 192.212.10.0 255.255.254.0 192.212.16.66
+ip route 192.212.14.128 255.255.255.128 192.212.16.66
+ip route 192.212.15.0 255.255.255.192 192.212.16.66
+ip route 192.212.15.128 255.255.255.192 192.212.16.66
+ip route 192.212.16.0 255.255.255.224 192.212.16.66
+ip route 192.212.16.48 255.255.255.248 192.212.16.66
+ip route 192.212.16.72 255.255.255.248 192.212.16.66
+ip route 192.212.16.80 255.255.255.248 192.212.16.66
+ip route 192.212.16.88 255.255.255.252 192.212.16.66
+end
+write memory

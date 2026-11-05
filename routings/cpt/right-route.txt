@@ -1,0 +1,27 @@
+### Navi
+enable
+configure terminal
+hostname Navi
+interface Fa0/0
+ description A18 ke Wired
+ ip address 192.212.16.62 255.255.255.252
+ no shutdown
+ exit
+interface Fa1/0
+ description A5 ke Switch6
+ ip address 192.212.12.1 255.255.255.0
+ no shutdown
+ exit
+interface Fa4/0
+ description A6 ke Switch8
+ ip address 192.212.13.1 255.255.255.0
+ no shutdown
+ exit
+interface Fa5/0
+ description A10 ke Switch7
+ ip address 192.212.15.65 255.255.255.192
+ no shutdown
+ exit
+ip route 0.0.0.0 0.0.0.0 192.212.16.61
+end
+write memory

@@ -1,0 +1,155 @@
+### Tachibana
+enable
+configure terminal
+hostname Tachibana
+interface Fa0/0
+ description A19 ke Wired
+ ip address 192.212.16.66 255.255.255.252
+ no shutdown
+ exit
+interface Fa1/0
+ description A4 ke Switch9
+ ip address 192.212.10.1 255.255.254.0
+ no shutdown
+ exit
+interface Fa4/0
+ description A21 ke Deus
+ ip address 192.212.16.73 255.255.255.252
+ no shutdown
+ exit
+ip route 0.0.0.0 0.0.0.0 192.212.16.65
+ip route 192.212.14.128 255.255.255.128 192.212.16.74
+ip route 192.212.15.0 255.255.255.192 192.212.16.74
+ip route 192.212.15.128 255.255.255.192 192.212.16.74
+ip route 192.212.16.0 255.255.255.224 192.212.16.74
+ip route 192.212.16.48 255.255.255.248 192.212.16.74
+ip route 192.212.16.76 255.255.255.252 192.212.16.74
+ip route 192.212.16.80 255.255.255.248 192.212.16.74
+ip route 192.212.16.88 255.255.255.252 192.212.16.74
+end
+write memory
+
+### Deus
+enable
+configure terminal
+hostname Deus
+interface Fa0/0
+ description A21 ke Tachibana
+ ip address 192.212.16.74 255.255.255.252
+ no shutdown
+ exit
+interface Fa1/0
+ description A8 ke Switch10
+ ip address 192.212.14.129 255.255.255.128
+ no shutdown
+ exit
+interface Fa4/0
+ description A22 ke Protocol7
+ ip address 192.212.16.77 255.255.255.252
+ no shutdown
+ exit
+ip route 0.0.0.0 0.0.0.0 192.212.16.73
+ip route 192.212.15.0 255.255.255.192 192.212.16.78
+ip route 192.212.15.128 255.255.255.192 192.212.16.78
+ip route 192.212.16.0 255.255.255.224 192.212.16.78
+ip route 192.212.16.48 255.255.255.248 192.212.16.78
+ip route 192.212.16.80 255.255.255.248 192.212.16.78
+ip route 192.212.16.88 255.255.255.252 192.212.16.78
+end
+write memory
+
+### Protocol7
+enable
+configure terminal
+hostname Protocol7
+interface Fa0/0
+ description A22 ke Deus
+ ip address 192.212.16.78 255.255.255.252
+ no shutdown
+ exit
+interface Fa1/0
+ description A11 ke Switch11
+ ip address 192.212.15.129 255.255.255.192
+ no shutdown
+ exit
+interface Fa4/0
+ description A23 ke Knights
+ ip address 192.212.16.81 255.255.255.252
+ no shutdown
+ exit
+ip route 0.0.0.0 0.0.0.0 192.212.16.77
+ip route 192.212.15.0 255.255.255.192 192.212.16.82
+ip route 192.212.16.0 255.255.255.224 192.212.16.82
+ip route 192.212.16.48 255.255.255.248 192.212.16.82
+ip route 192.212.16.84 255.255.255.252 192.212.16.82
+ip route 192.212.16.88 255.255.255.252 192.212.16.82
+end
+write memory
+
+### Knights
+enable
+configure terminal
+hostname Knights
+interface Fa0/0
+ description A23 ke Protocol7
+ ip address 192.212.16.82 255.255.255.252
+ no shutdown
+ exit
+interface Fa1/0
+ description A16 ke Eiri
+ ip address 192.212.16.49 255.255.255.248
+ no shutdown
+ exit
+interface Fa4/0
+ description A24 ke Phantoma
+ ip address 192.212.16.85 255.255.255.252
+ no shutdown
+ exit
+ip route 0.0.0.0 0.0.0.0 192.212.16.81
+ip route 192.212.15.0 255.255.255.192 192.212.16.86
+ip route 192.212.16.0 255.255.255.224 192.212.16.86
+ip route 192.212.16.88 255.255.255.252 192.212.16.86
+end
+write memory
+
+### Phantoma
+enable
+configure terminal
+hostname Phantoma
+interface Fa0/0
+ description A24 ke Knights
+ ip address 192.212.16.86 255.255.255.252
+ no shutdown
+ exit
+interface Fa1/0
+ description A13 ke Switch12
+ ip address 192.212.16.1 255.255.255.224
+ no shutdown
+ exit
+interface Fa4/0
+ description A25 ke Shibuya
+ ip address 192.212.16.89 255.255.255.252
+ no shutdown
+ exit
+ip route 0.0.0.0 0.0.0.0 192.212.16.85
+ip route 192.212.15.0 255.255.255.192 192.212.16.90
+end
+write memory
+
+### Shibuya
+enable
+configure terminal
+hostname Shibuya
+interface Fa0/0
+ description A25 ke Phantoma
+ ip address 192.212.16.90 255.255.255.252
+ no shutdown
+ exit
+interface Fa1/0
+ description A9 ke Switch13
+ ip address 192.212.15.1 255.255.255.192
+ no shutdown
+ exit
+ip route 0.0.0.0 0.0.0.0 192.212.16.89
+end
+write memory
