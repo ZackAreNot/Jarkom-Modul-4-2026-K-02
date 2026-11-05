@@ -16,11 +16,21 @@ https://docs.google.com/spreadsheets/d/1w6Mh8W8C_vjY8R0xVzYc2j1f4y1E8o/edit?usp=
 
 ### CPT - VLSM
 
-Pada topologi Cisco Packet Tracer (CPT) diterapkan metode **VLSM (Variable Length Subnet Masking)** dengan prefix kelompok **`192.212.x.x`** dan Root Supernet **`192.212.0.0/19`**. Seluruh kebutuhan alamat IP diurutkan dari blok terbesar ke terkecil untuk memaksimalkan efisiensi dan mencegah fragmentasi ruang alamat (*address space*).
+> [!NOTE]
+> **Status Pengerjaan:** *Perancangan Subnetting & Draf Konfigurasi (Progress Parsial)*
+> 
+> Bagian Cisco Packet Tracer (CPT) dikerjakan oleh rekan kelompok sejauh tahap perancangan teori, subnetting, dan penyusunan berkas konfigurasi teks:
+> - **Capaian Pengerjaan:**
+>   1. Perhitungan pembagian subnet metode **VLSM (Variable Length Subnet Masking)** dari Subnet A1 s.d. A25 yang diurutkan berdasarkan kebutuhan host terbesar ke terkecil (telah dimasukkan ke spreadsheet tab *Pembagian IP - VLSM*).
+>   2. Perancangan pemetaan antarmuka dan port pengkabelan untuk ke-13 router.
+>   3. Penyusunan draf skrip Cisco IOS CLI (`ip address`, `no shutdown`, static `ip route`) untuk 13 router pada folder [`routings/cpt/`](./routings/cpt/).
+>   4. Perencanaan alokasi static IP address, subnet mask, dan default gateway untuk ke-25 workstation PC client.
+> - **Keterbatasan / Kendala:**
+>   Karena keterbatasan waktu pengerjaan oleh rekan kelompok, implementasi fisik topologi ke dalam file simulasi Cisco Packet Tracer (`.pkt`) serta **pengujian konektivitas live (ping test) belum sempat diselesaikan secara penuh**.
 
-![Topologi Cisco Packet Tracer](assets/Topologi%20CPT.png)
+Pada perancangan VLSM ini digunakan prefix kelompok **`192.212.x.x`** dan Root Supernet **`192.212.0.0/19`**. Seluruh kebutuhan alamat IP diurutkan dari blok terbesar ke terkecil untuk memaksimalkan efisiensi dan mencegah fragmentasi ruang alamat (*address space*).
 
-1. **Spesifikasi Perangkat & Pengkabelan**
+1. **Spesifikasi Perangkat & Pengkabelan (Rancangan)**
    - **Router:** Menggunakan `Router-PT` dengan 4 interface FastEthernet (`Fa0/0`, `Fa1/0`, `Fa4/0`, `Fa5/0`).
    - **Switch:** Menggunakan switch layer 2 `Switch-2960` atau `Switch-PT`.
    - **Host/Client:** Menggunakan workstation `PC-PT` sebanyak 25 node.
@@ -213,9 +223,9 @@ Pengaturan IP pada seluruh 25 workstation (`PC-PT`) di CPT melalui menu **Deskto
 
 ---
 
-6. **Pengujian Konektivitas (Testing Ping)**
+6. **Rancangan Prosedur Pengujian (Testing Plan)**
 
-Pengujian konektivitas antarcabang dilakukan melalui **Command Prompt** pada workstation (catatan: pada paket pertama di CPT mungkin terjadi ARP timeout, ulangi ping untuk mendapatkan balasan utuh):
+Berikut merupakan skenario pengujian konektivitas yang telah dirancang untuk memverifikasi jalur routing apabila simulasi di Cisco Packet Tracer dijalankan:
 - **Dari Mika (Ujung Sayap Bawah - Shibuya):**
   - `ping 192.212.14.2` (JJ - Sayap Cyberia)
   - `ping 192.212.4.2` (Omnipresence - Sayap Kiri Accela)
@@ -227,7 +237,7 @@ Pengujian konektivitas antarcabang dilakukan melalui **Command Prompt** pada wor
 - **Dari JJ (Sayap Atas - Cyberia):**
   - `ping 192.212.16.50` (Eiri - Sayap Bawah Knights)
 - **Verifikasi Tabel Rute Router:**
-  - Ketik `show ip route` pada CLI masing-masing router untuk memverifikasi entri static routing aktif.
+  - Perintah `show ip route` pada CLI masing-masing router untuk memverifikasi entri tabel routing statis aktif.
 
 ---
 

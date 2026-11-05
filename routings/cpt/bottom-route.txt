@@ -153,3 +153,4 @@ interface Fa1/0
 ip route 0.0.0.0 0.0.0.0 192.212.16.89
 end
 write memory
+

@@ -25,3 +25,4 @@ interface Fa5/0
 ip route 0.0.0.0 0.0.0.0 192.212.16.61
 end
 write memory
+
