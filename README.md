@@ -17,16 +17,15 @@ https://docs.google.com/spreadsheets/d/1w6Mh8W8C_vjY8R0xVzYc2j1f4y1E8o/edit?usp=
 ### CPT - VLSM
 
 > [!NOTE]
-> **Status Pengerjaan:** *Perancangan Subnetting & Draf Konfigurasi (Progress Parsial)*
+> **Status Pengerjaan:** *Perancangan & Implementasi Simulasi Live (Selesai Penuh)*
 > 
-> Bagian Cisco Packet Tracer (CPT) dikerjakan oleh rekan kelompok sejauh tahap perancangan teori, subnetting, dan penyusunan berkas konfigurasi teks:
+> Bagian Cisco Packet Tracer (CPT) metode **VLSM (Variable Length Subnet Masking)** telah selesai diimplementasikan secara utuh ke dalam berkas simulasi [`VSLM.pkt`](./VSLM.pkt):
 > - **Capaian Pengerjaan:**
->   1. Perhitungan pembagian subnet metode **VLSM (Variable Length Subnet Masking)** dari Subnet A1 s.d. A25 yang diurutkan berdasarkan kebutuhan host terbesar ke terkecil (telah dimasukkan ke spreadsheet tab *Pembagian IP - VLSM*).
->   2. Perancangan pemetaan antarmuka dan port pengkabelan untuk ke-13 router.
->   3. Penyusunan draf skrip Cisco IOS CLI (`ip address`, `no shutdown`, static `ip route`) untuk 13 router pada folder [`routings/cpt/`](./routings/cpt/).
->   4. Perencanaan alokasi static IP address, subnet mask, dan default gateway untuk ke-25 workstation PC client.
-> - **Keterbatasan / Kendala:**
->   Karena keterbatasan waktu pengerjaan oleh rekan kelompok, implementasi fisik topologi ke dalam file simulasi Cisco Packet Tracer (`.pkt`) serta **pengujian konektivitas live (ping test) belum sempat diselesaikan secara penuh**.
+>   1. Perhitungan pembagian subnet metode **VLSM** dari Subnet A1 s.d. A25 yang diurutkan berdasarkan kebutuhan host terbesar ke terkecil (Root Supernet `192.212.0.0/19`).
+>   2. Pemetaan antarmuka dan pengkabelan lengkap (13 Router, 13 Switch, dan 25 PC Client).
+>   3. Konfigurasi seluruh antarmuka dan static route pada 13 router via Cisco IOS CLI (tersimpan ke *startup-config* / `write memory`).
+>   4. Alokasi konfigurasi static IP address, subnet mask, dan default gateway untuk ke-25 workstation PC client.
+>   5. **Pengujian Konektivitas Live (Ping Test):** Pengujian konektivitas end-to-end lintas sayap (Cyberia, Wired, Psyche, Copland, Schumann, Accela, Navi, Tachibana, Deus, Protocol7, Knights, Phantoma, Shibuya) telah diverifikasi langsung pada simulator Cisco Packet Tracer dengan **hasil 0% packet loss (100% sukses)**.
 
 Pada perancangan VLSM ini digunakan prefix kelompok **`192.212.x.x`** dan Root Supernet **`192.212.0.0/19`**. Seluruh kebutuhan alamat IP diurutkan dari blok terbesar ke terkecil untuk memaksimalkan efisiensi dan mencegah fragmentasi ruang alamat (*address space*).
 
